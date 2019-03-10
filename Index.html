@@ -2,7 +2,7 @@
 
 <head>
 <!-- <link rel = "stylesheet"  type = "text/css"  href = "clouds.css" /> -->
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 
 .screen {
@@ -115,12 +115,22 @@
 <div id="cloud_right"></div>
 -->
 </div>
-
+<button onclick="openFullscreen();">Open Video in Fullscreen Mode</button>
 </center>
 
 <script>
-
-
+var elem = document.getElementById("screen");
+function openFullscreen() {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.mozRequestFullScreen) { /* Firefox */
+    elem.mozRequestFullScreen();
+  } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE/Edge */
+    elem.msRequestFullscreen();
+  }
+}
 </script>
 </body>
 </html>
