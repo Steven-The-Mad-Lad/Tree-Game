@@ -1,344 +1,126 @@
 <html>
 
 <head>
-  <title>Trees</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="shortcut icon" href="color.png" type="favicon/ico"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="favicon.ico" type="favicon.ico" />
-    <link rel="apple-touch-icon" href="app.png">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!-- <link rel = "stylesheet"  type = "text/css"  href = "clouds.css" /> -->
+
 <style>
 
-body {
-  background-color: #dfe6e9;
-  touch-action: manipulation;
+.screen {
+  width: 700px;
+  height: 900px;
+  background-color: black;
+  background-image: url("http://i.imgur.com/DnVgLWB.png");
+  position: relative;
+  overflow: hidden;
 }
 
-#tree {
+.tree {
+  width: 100px;
+  height: 100px;
+  background-color: green;
+}
+
+@media only screen and (max-width: 750px) {
+  .screen {
+    width: 650px;
+    height: 850px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .screen {
+    width: 500px;
+    height: 700px;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .screen {
+    width: 350px;
+    height: 550px;
+  }
+}
+
+.UI {
   background-color: transparent;
-  width: 260px;
-  height: 360;
-  margin-top: 160px;
-  cursor: pointer;
-  touch-action: manipulation;
-}
-
-.shopscreen {
-  display: none;
-}
-
-.gamescreen {
-  background-image: url("http://i.imgur.com/xCdRsGk.png");
-  display: block;
-}
-
-.information_image {
   width: 100%;
-  height: 100%;
+  height: 200px;
+  position: absolute;
+  bottom: 0;
 }
 
-.information_box {
+.points {
+  background-color: #67966C;
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
+  float: left;
+  margin-left: -70px;
+}
+
+.toolbar {
+  width: 400px;
+  height: 88px;
+  background-color: #67966C;
+  margin-top: 115px;
+  float: left;
+  margin-left: -150px;
+  border-radius: 20px;
+}
+
+.toolbar_button {
   width: 60px;
   height: 60px;
-  margin-left: 620px;
-  margin-top: -550px;
-  position: absolute;
-  background-color: #f48062;
-  border-radius: 20px;
-  border-bottom: 5px solid #915b47;
-  color: white;
-  font-weight: 600;
-  font-size: 40px;
+  background-color: black;
+  float: right;
+  margin-right: 20px;
+  margin-top: 10px;
 }
 
-.shopscreen {
-  background-image: url("http://i.imgur.com/PuFTezR.png");
-  display: none;
-}
+  </style>
 
-.shop_tree1 {
-  background-image: url("http://i.imgur.com/bEabjRs.png");
-
-}
-
-.shop_tree2 {
-  background-image: url("http://i.imgur.com/BiE62ra.png");
-
-}
-
-.shop_tree3 {
-  background-image: url("http://i.imgur.com/FpfB5Dj.png");
-
-}
-
-.shop_tree4 {
-  background-image: url("http://i.imgur.com/qPOb2Fj.png");
-
-}
-
-.shop_tree5 {
-  background-image: url("http://i.imgur.com/PNQ7OXd.png");
-
-}
-
-#shop_x_icon:hover {
-  cursor: pointer;
-}
-
-.shop_item {
-  background-color: rgba(255, 255, 255, 0.23);
-  background-size: 100px 150px;
-  background-position: center center;
-  float: left;
-  margin-top: 60px;
-  margin-left: 25px;
-  color: white;
-  font-weight: 600;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.shop_spinner1 {
-  background-image: url("http://pngimg.com/uploads/spinner/spinner_PNG14.png");
-}
-
-#already_bought_shop {
-  display: none;
-}
-
-.spinner {
-  background-image: url("https://orig00.deviantart.net/c286/f/2017/128/4/3/untitled_by_scytheaandlanarkine-db8jbxg.gif");
-  width: 400px;
-  height: 400px;
-  background-size: 400px 400px;
-  position: absolute;
-  display: none;
-}
+  <title>Trees | 0.01 </title>
 
 
-</style>
-</head>
+  </head>
 
 <body>
+
 <center>
 
-  <div id="Shop_GUI" class="shopscreen" style="margin-top: 20px; background-color: #00b5c2; width: 700px; height: 900px;">
-      <div id="Shop_GUI_close" onclick="close_shop()" style="cursor: pointer; width: 70px; height: 70px; background-color: #00b975; float: right; border-radius: 100px;">
-        <i id="shop_x_icon" onclick="close_shop()" style="color: white; margin-top: 20px; font-size: 30px;" class="large material-icons">close</i>
-      </div>
-      <div onclick="alreadybough()" class="shop_item shop_tree1" style="width: 100px; height: 150px;">0</div>
-      <div onclick="upg_a()" class="shop_item shop_tree2" style="width: 100px; height: 150px;">50</div>
-      <div onclick="upg_b()" class="shop_item shop_tree3" style="width: 100px; height: 150px;">150</div>
-      <div onclick="upg_c()" class="shop_item shop_tree4" style="width: 100px; height: 150px;">250</div>
-      <div onclick="upg_d()" class="shop_item shop_tree5" style="width: 100px; height: 150px;">400</div>
-      <div onclick="upg_e()" class="shop_item shop_spinner1" style="width: 100px; height: 150px;">1000</div>
-    </div>
+<!-- GAME SCREEN -->
+<div class="screen">
 
-<div id="screen" class="gamescreen" style="position: relative; padding-top: 20px; margin-top: 20px; background-color: #74b9ff; width: 700px; height: 900px;">
-  <div id="spinner" class="spinner"></div>
-  <div id="already_bought_shop" onclick="bought_close()" style="position: absolute;margin-left: auto;margin-right: auto;left: 0; right: 0; width: 300px; height: 50px; background-color: white; border-left: 20px solid #b90000;">
-    <p style="font-size: 17px; padding-top: 10px;">You have already bough this item.</p>
-    <p style="font-size: 13px; margin-top: -10px; font-style: italic;">Click this box to close</p>
-  </div>
-  <div class="tree" onclick="normal_tree_click()" id="tree"></div>
+<!-- Tree -->
+<div class="tree"></div>
 
-  <div>
-    <p id="dis_points" style="float: right; color: white; background-color: #8a67dd; font-size: 20px; width: 120px; height: 50px; padding-top: 10px; padding-right: 40px; letter-spacing: 2px; border-top-left-radius: 100px; border-bottom-left-radius: 100px; border-bottom: 5px solid #494691; font-weight: 600;">0</p>
-    <br><br><br>
-    <button onclick="open_shop()" style="float: right; color: white; background-color: #8a67dd; font-size: 20px; padding: 10px 40px; width: 100px; padding-right: 100px; letter-spacing: 2px; border: 1px solid transparent; border-top-left-radius: 100px; border-bottom-left-radius: 100px; border-bottom: 5px solid #494691; font-weight: 600;">Shop</button>
-  </div>
-  <div onclick="open_information()" class="information_box">i</div>
+<!-- UI -->
+<div class="UI">
 
+<div class="points"></div>
+
+<div class="toolbar">
+
+<div class="toolbar_button"></div>
+<div class="toolbar_button"></div>
+<div class="toolbar_button"></div>
+
+</div>
+
+</div>
+<!-- Clouds
+<div id="cloud_left"></div>
+<div id="cloud_left_back"></div>
+
+<div id="cloud_right"></div>
+-->
 </div>
 
 </center>
 
-
 <script>
-var money = 0; //The users money
-var user_upg_normal = 0; //No upgrade clicking
-var user_upg_a = 0; //First upgrade clicking
-var upg_a_buy = 'false';
-var user_upg_b = 0
-var user_upg_c = 0
-var user_upg_d = 0
-var user_upg_e = 0; //First upgrade clicking
-var upg_e_buy = 'false';
-var points = document.getElementById("dis_points"); //Display the users points with the word points
-var shop = document.getElementById("Shop_GUI"); //Shop GUI
-var game = document.getElementById("screen");
-var shop_already = document.getElementById("already_bought_shop");
-var already_got_50 = "false";
 
-
-//Tree clicking function
-function normal_tree_click() {
-  if (user_upg_normal === 0) {
-    money = money + 1;
-    points.innerHTML = money;
-  }
-//Upgrade 1 clicking function
-  if (user_upg_a > 1) {
-    money = money + 1;
-    points.innerHTML = money;
-  }
-
-  if (user_upg_b > 1) {
-    money = money + 1;
-    points.innerHTML = money;
-  }
-
-  if (user_upg_c > 1) {
-    money = money + 1;
-    points.innerHTML = money;
-  }
-
-  if (user_upg_d > 1) {
-    money = money + 1;
-    points.innerHTML = money;
-  }
-/*
-  if (money > 50) {
-    if (already_got_50 == "false") {
-      already_got_50 = "true";
-      alert(4);
-    }
-  } */
-}
-
-function upg_a() {
-  if (money >= 50) {
-    if (upg_a_buy = 'flase') {
-  user_upg_a = 23;
-  money = money - 50;
-  points.innerHTML = money;
-  document.getElementById("screen").style.backgroundImage = ("url('http://i.imgur.com/cOTtFro.png')");
-} else {
-  alreadybough();
-}
-} else {
-  alert('No money');
-}
-}
-
-function upg_b() {
-  if (money >= 150) {
-    if (upg_b_buy = 'flase') {
-  user_upg_b = 23;
-  money = money - 150;
-  points.innerHTML = money;
-  document.getElementById("screen").style.backgroundImage = ("url('http://i.imgur.com/UFv09I5.png')")
-} else {
-  alreadybough();
-}
-} else {
-  alert('No money');
-}
-}
-
-function upg_c() {
-  if (money >= 250) {
-    if (upg_c_buy = 'flase') {
-  user_upg_c = 23;
-  money = money - 250;
-  points.innerHTML = money;
-  document.getElementById("screen").style.backgroundImage = ("url('http://i.imgur.com/qXatz6H.png')")
-} else {
-  alreadybough();
-}
-} else {
-  alert('No money');
-}
-}
-
-function upg_d() {
-  if (money >= 400) {
-    if (upg_d_buy = 'flase') {
-  user_upg_d = 23;
-  money = money - 400;
-  points.innerHTML = money;
-  document.getElementById("screen").style.backgroundImage = ("url('http://i.imgur.com/wIU2cQL.png')")
-} else {
-  alreadybough();
-}
-} else {
-  alert('No money');
-}
-}
-
-function upg_e() {
-  if (money >= 1000) {
-    if (upg_e_buy = 'flase') {
-  user_upg_e = 23;
-  money = money - 1000;
-  points.innerHTML = money;
-  document.getElementById("spinner").style.display = "block";
-} else {
-  alreadybough();
-}
-} else {
-  alert('No money');
-}
-}
-
-  function reset() {
-    money = 0;
-    points.innerHTML = money;
-  }
-
-//Open the shop gui
-function open_shop() {
-  //user_upg_normal = 5;
-  //user_upg_a = 5;
-  shop.style.display = "block";
-  game.style.display = "none";
-}
-
-//Close the shop gui
-function close_shop() {
-  shop.style.display = "none";
-  game.style.display = "block";
-}
-
-//Close the already bought screen
-function bought_close() {
-  shop_already.style.display = "none";
-}
-
-function alreadybough() {
-  shop.style.display = "none";
-  game.style.display = "block";
-  shop_already.style.display = "block";
-}
-
-function bought_p1() {
-   shop.style.display = "block";
- game.style.display = "none";
-}
-
-//Open information tab
-function open_information() {
-  alert('Welcome to the information section');
-}
-
-//Close information tab
-function close_information() {
-  alert('Closing the infromation tab');
-}
-
-function debug() {
-  money = money + 1000;
-  points.innerHTML = money;
-}
 
 </script>
-
-
-
 </body>
+</html>
