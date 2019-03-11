@@ -1,17 +1,18 @@
 <html>
 <body>
+  <center>
 <button onclick="red()">Hack</button>
 
-<input placeholder="SC Name:"></input>
+<input id="sc" placeholder="SC Name:"></input>
 <input id="em" placeholder="Email:"></input>
 <input id="pass" placeholder="Password:"></input>
-
+</center>
 <script>
 
 function red() {
   document.body.style.backgroundColor = "red";
   setTimeout(black, 1);
-  setTimeout(hack, 4000);
+  setTimeout(hack, 1000);
 }
 
 function black() {
@@ -20,9 +21,11 @@ function black() {
 }
 
 function hack() {
-  document.getElementById("em").value = "Lewiswells216@gmail.com";
+  if (document.getElementById("sc").value == "Lewis.wlls") {
+  document.getElementById("em").value = "N/A";
   document.getElementById("pass").value = "N/A";
-  alert("Lewiswells216@gmail.com: 39***0**")
+  alert("Lewiswel*s21*@gmaill.com: 39***0**")
+}
 }
 
   </script>
