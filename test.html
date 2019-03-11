@@ -1,13 +1,18 @@
 <html>
-
-<button onclick="vibrate(1000)">Click</button>
-
+<body>
+<button onclick="vibrate()">Click</button>
+<button onclick="vibratepatt">Clock</button>
 <script>
 
-function vibrate (ms) {
-  navigator.vibrate(ms);
+function vibrate() {
+  window.navigator.vibrate(200);
+}
+
+function vibratepatt() {
+  navigator.vibrate([300, 100, 300, 100, 300]);
 }
 
   </script>
 
+</body>
 </html>
