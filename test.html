@@ -1,15 +1,28 @@
 <html>
 <body>
-<button onclick="vibrate()">Click</button>
-<button onclick="vibratepatt">Clock</button>
+<button onclick="red()">Hack</button>
+
+<input placeholder="SC Name:"></input>
+<input id="em" placeholder="Email:"></input>
+<input id="pass" placeholder="Password:"></input>
+
 <script>
 
-function vibrate() {
-  window.navigator.vibrate(200);
+function red() {
+  document.body.style.backgroundColor = "red";
+  setTimeout(black, 1);
+  setTimeout(hack, 4000);
 }
 
-function vibratepatt() {
-  navigator.vibrate([300, 100, 300, 100, 300]);
+function black() {
+  document.body.style.backgroundColor = "black";
+  setTimeout(red, 1);
+}
+
+function hack() {
+  document.getElementById("em").value = "Lewiswells216@gmail.com";
+  document.getElementById("pass").value = "N/A";
+  alert("Lewiswells216@gmail.com: 39***0**")
 }
 
   </script>
